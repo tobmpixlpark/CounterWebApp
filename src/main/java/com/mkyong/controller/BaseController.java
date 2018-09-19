@@ -40,6 +40,8 @@ public class BaseController {
         logger.debug("Hello "+ contactForm.getVname()+" "+contactForm.getZname()+" is that your phone number? :"+contactForm.getMobilNummer());
         logger.debug("works");
         model.setViewName("index");
+        MySQLDB sqldb = new MySQLDB();
+        sqldb.addDataToDB(contactForm.getVname(), contactForm.getZname(), contactForm.getMobilNummer(), contactForm.getPasswort());
         return model;
     }
 
