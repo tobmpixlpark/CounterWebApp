@@ -46,7 +46,7 @@ public class BaseController {
         logger.debug("works");
         model.setViewName("index");
         Gson gson = new Gson();
-        gson.toJson(123.45, new FileWriter("C:\\Users\\tobmerx\\Downloads\\CounterWebApp\\User\\test.json"));
+        gson.toJson(contactForm, new FileWriter("C:\\Users\\tobmerx\\Downloads\\CounterWebApp\\User\\test.json"));
         return model;
     }
 
