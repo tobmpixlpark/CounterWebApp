@@ -1,14 +1,19 @@
 package com.mkyong.controller;
 
+import com.google.gson.Gson;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FilterWriter;
+import java.io.IOException;
+
 @Controller
 public class BaseController {
-
     private static int counter = 0;
     private static final String VIEW_INDEX = "index";
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);
@@ -35,13 +40,13 @@ public class BaseController {
     }
 
     @RequestMapping(value = "/Formular", method = RequestMethod.POST)
-    public ModelAndView formular(@ModelAttribute ContactForm contactForm, ModelAndView model) {
+    public ModelAndView formular(@ModelAttribute ContactForm contactForm, ModelAndView model) throws IOException {
 
         logger.debug("Hello "+ contactForm.getVname()+" "+contactForm.getZname()+" is that your phone number? :"+contactForm.getMobilNummer());
         logger.debug("works");
         model.setViewName("index");
-        MySQLDB sqldb = new MySQLDB();
-        sqldb.addDataToDB(contactForm.getVname(), contactForm.getZname(), contactForm.getMobilNummer(), contactForm.getPasswort());
+        Gson gson = new Gson();
+        gson.toJson(123.45, new FileWriter("C:\\Users\\tobmerx\\Downloads\\CounterWebApp\\User\\test.json"));
         return model;
     }
 
